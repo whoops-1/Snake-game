@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Momo+Trust+Display&display=swap');
+:root {
+  /* Colors */
+  --primary-color: #337ab7;
+  --secondary-color: #11202E;
+  --background-color: #f9f9f9;
+  --text-color: #EAE4FF;
+  --error-color: #dc3545;
+  --success-color: #28a745;
+
+  /* Typography */
+  --font-family: Arial, sans-serif;
+  --font-size-base: 16px;
+  --font-size-sm: 14px;
+  --font-size-lg: 18px;
+  --line-height: 1.6;
+
+  /* Spacing */
+  --padding-sm: 4px;
+  --padding-md: 10px;
+  --padding-lg: 1.5rem;
+  --margin-sm: 0.5rem;
+  --margin-md: 1rem;
+  --margin-lg: 1.5rem;
+
+  /* Border */
+  --border-color: #ddd;
+  --border-color-secondary: #85888B;
+  --border-radius-sm: 0.25rem;
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 1rem;
+  --border-width: 1px;
+  --border-style: solid;
+
+  /* Shadows */
+  --box-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
+  --box-shadow-md: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --box-shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  /* Transitions */
+  --transition-duration: 0.2s;
+  --transition-timing-function: ease-in-out;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Momo Trust Display";
+}
+
+html,body{
+    height: 100%;
+    width: 100%;
+    background: var(--secondary-color);
+    color: var(--text-color);
+}
+
+body{
+    font-family: val(--font-family);
+}
+
+
+main{
+    width: 100%;
+    height: 100%;
+}
+
+section{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: var(--padding-sm) var(--padding-md);
+    padding-bottom: 5px;
+}
+
+section .infos{
+    display: flex;
+    
+    position: relative;
+    justify-content: space-between;
+    padding: var(--padding-sm) var(--padding-md);
+}
+
+.infos div{
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md) ;
+    padding: var(--padding-md);
+    
+}
+
+ .board{
+    
+    border: 1px solid var(--border-color-secondary);
+    flex-grow: 1;
+    display: grid;
+    
+    grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(40px, 1fr));
+}
+
+.block{
+    border: 1px solid var(--border-color-secondary);
+    
+}
+
+.fill{
+    background: #D3E1EE;
+}
+
+.food{
+    background: #FF1800;
+}
+
+.controls{
+    width: 100%;
+    
+    position: absolute;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    top: 50%;
+}
+
+.controls div{
+    width: 40px;
+    height: 60px;
+    background: #2630A333;
+    
+    
+}
+
+.arrow{
+    color: white;
+    
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    font-size: 36px;
+    background: #2630A333;
+    border: none;
+    
+}
+
+
+@media(min-width: 1024px){
+    .controls{
+        display: none;
+    }
+}
+
+
+.restart{
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    
+    z-index: 1000;
+    background:  #FFFFFF;
+    opacity: 60%;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    animation: blink 1s step-end infinite;
+}
+@keyframes blink {
+  0% {
+    opacity: 70%;
+  }
+  50% {
+    opacity: 50%;
+  }
+  100% {
+    opacity: 70%;
+  }
+}
+
+.hidden{
+    display: none;
+}
+
+img{
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    background: transparent;
+}
