@@ -3,7 +3,7 @@ let time = document.querySelector(".tspan")
 let scoreDiv = document.querySelector(".sspan")
 let highScoreDiv = document.querySelector(".hspan")
 let restart = document.querySelector(".restart")
-
+let reTimeout;
 let seconds = 0;
 let minutes = 0;
 let hours = 0;
@@ -34,7 +34,21 @@ let food = {
 let direction = "right"
 let intervalId = null;
 
+let gif = new Image();
+gif.src = '/8de28f51a3083491685bca61f9ace241.gif';
 
+function loadGif() {
+  document.getElementById('gover').src = gif.src;
+}
+
+function unloadGif() {
+  document.getElementById('gover').src = '';
+}
+
+function restartGif() {
+  gif.src = '/8de28f51a3083491685bca61f9ace241.gif';
+  document.getElementById('gover').src = gif.src;
+}
 
 
 
@@ -143,19 +157,34 @@ function checkSnake(head){
 //     }
 // }
 
+const controlBtn = {
+    left: function(){
+        direction = "left"
+    },
+    right: function(){
+        direction = "right"
+    },
+    up: function(){
+        direction = "up"
+    },
+    down: function(){
+        direction = "down"
+    }
+}
+
 document.querySelectorAll("button").forEach((btn)=>{
     btn.addEventListener("click", (e)=>{
         if(btn.classList.contains("left")){
-            direction = "left"
+            controlBtn.left()
         }
         else if(btn.classList.contains("right")){
-            direction = "right"
+            controlBtn.right()
         }
         else if(btn.classList.contains("up")){
-            direction = "up"
+            controlBtn.up()
         }
         else if(btn.classList.contains("down")){
-            direction = "down"
+            controlBtn.down()
         }
     })
 })
@@ -189,6 +218,7 @@ startGame()
 
 function stopGame() {
     clearInterval(intervalId)
+    clearInterval(timer)
 }
 
 function restartGame() {
@@ -205,15 +235,41 @@ function restartGame() {
     }
     direction = "right"
     startGame()
+    
 }
 
 function restartWindow(){
     restart.classList.remove("hidden")
     
-    setTimeout(()=>{
+    restartGif()
+    reTimeout = setTimeout(()=>{
         restart.classList.add("hidden")
         restartGame()
+        
     },6000)
     
 }
 
+addEventListener("keydown", (event)=>{
+    if(event.key == "ArrowUp"){
+        controlBtn.up()
+    }
+    if(event.key == "ArrowDown"){
+        controlBtn.down()
+    }
+    if(event.key == "ArrowRight"){
+        controlBtn.right()
+    }
+    if(event.key == "ArrowLeft"){
+        controlBtn.left()
+    }
+})
+
+
+
+document.querySelector(".rebtn").addEventListener('click', ()=>{
+    clearTimeout(reTimeout)
+    restart.classList.add("hidden")
+    restartGame()
+    
+})
