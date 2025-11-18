@@ -35,7 +35,7 @@ let direction = "right"
 let intervalId = null;
 
 let gif = new Image();
-gif.src = '/8de28f51a3083491685bca61f9ace241.gif';
+gif.src = './8de28f51a3083491685bca61f9ace241.gif';
 
 function loadGif() {
   document.getElementById('gover').src = gif.src;
@@ -46,7 +46,7 @@ function unloadGif() {
 }
 
 function restartGif() {
-  gif.src = '/8de28f51a3083491685bca61f9ace241.gif';
+  gif.src = './8de28f51a3083491685bca61f9ace241.gif';
   document.getElementById('gover').src = gif.src;
 }
 
